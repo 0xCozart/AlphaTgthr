@@ -9,6 +9,16 @@ def home_view(request, *args, **kwargs):
     return render(request, "pages/home.html", context={}, status=200)
 
 
+def post_list_view(request, *args, **kwargs):
+    qs = Post.objects.all()
+    post_list = [{"id": x.id, "content": x.content} for x in qs]
+    data = {
+        "isUser": False,
+        "response": post_list,
+    }
+    return JsonResponse(data)
+
+
 def post_detail_view(request, post_id, *args, **kwargs):
     """
     REST API VIEW
