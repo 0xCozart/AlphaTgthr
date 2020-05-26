@@ -1,22 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} Welcome to Tgthr.
 
-{% block content %}
-Welcome to Tgthr. 
-
+<div id="posts">
+  Replace me
+</div>
 
 <script>
+  const postsElement = document.getElementById("posts");
+  postsElement.innerHTML = "Loading...";
+
   const xhr = new XMLHttpRequest();
-  const method = 'GET' // 'POST';
+  const method = "GET"; // 'POST';
   const url = "/posts";
   const responseType = "json";
 
-  xhr.responseType = responseType
-  xhr.open(method, url)
-  xhr.onload = function() {
-    const serverResponse = xhr.response
-    let listedItems = serverResponse.response
-    console.log(listedItems)
-  }
-  xhr.send()
+  xhr.responseType = responseType;
+  xhr.open(method, url);
+  xhr.onload = function () {
+    const serverResponse = xhr.response;
+    let listedItems = serverResponse.response;
+    console.log(listedItems);
+  };
+  xhr.send();
 </script>
 {% endblock content %}
